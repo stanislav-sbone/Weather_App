@@ -7,16 +7,14 @@ import ThisDay from './components/ThisDay';
 
 function App() {
   return (
-    <>
-      <AppContainer>
-        <Header />
-        <SearchBar />
-        <InfoContainer>
-          <ThisDay />
-          <Forecast />
-        </InfoContainer>
-      </AppContainer>
-    </>
+    <AppContainer>
+      <Header />
+      <SearchBar />
+      <InfoContainer>
+        <ThisDay />
+        <Forecast />
+      </InfoContainer>
+    </AppContainer>
   );
 }
 

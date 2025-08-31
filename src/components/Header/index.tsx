@@ -9,8 +9,9 @@ const Header: FC = () => {
           React <span>Weather</span>
         </h1>
         <p className={s.text}>
-          Experience weather like never before with real-time data, beautiful
-          visuals, and precise forecasts for any location worldwide
+          Наблюдайте за погодой так, как никогда раньше, благодаря данным в
+          режиме реального времени, красивым визуальным эффектам и точным
+          прогнозам для любого местоположения по всему миру
         </p>
       </div>
     </header>

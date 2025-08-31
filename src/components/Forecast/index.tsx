@@ -7,7 +7,7 @@ const Forecast: FC = () => {
     <div className={s.forecast}>
       <div className={s.title}>
         <Calendar />
-        <h3>Forecast for the week</h3>
+        <h3>Прогноз погоды на неделю</h3>
       </div>
     </div>
   );

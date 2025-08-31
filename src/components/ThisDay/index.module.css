@@ -39,6 +39,7 @@
 .thisDayTemp {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 1.5rem;
 }
 
 .temp {
@@ -58,4 +59,93 @@
 .weatherImage {
   width: 75px;
   height: 75px;
+}
+
+/* Weather Cards */
+.weatherCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border-radius: 1rem;
+  padding: 1rem;
+  transition: all 0.3s ease;
+}
+
+.cardTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.cardValue {
+  font-weight: 500;
+}
+
+/* Sun Time */
+.sunTime {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.sunCard {
+  backdrop-filter: blur(8px);
+  border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sunrise {
+  background: linear-gradient(
+    to right,
+    rgba(255, 166, 0, 0.3),
+    rgba(255, 255, 0, 0.3)
+  );
+}
+
+.sunset {
+  background: linear-gradient(
+    to right,
+    rgba(128, 0, 128, 0.3),
+    rgba(255, 192, 203, 0.3)
+  );
+}
+
+.sunCardImage {
+  width: 2rem;
+  height: 2rem;
+}
+
+.sunCardTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.sunCardDetails {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+}
+
+.sunTimeLabel {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.sunTimeValue {
+  color: white;
+  font-weight: 600;
+  font-size: 1.125rem;
 }

@@ -1,0 +1,35 @@
+.forecastCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.cardImage {
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-right: 1rem;
+}
+
+.cardInfo {
+  margin-right: auto;
+}
+
+.temp {
+  text-align: right;
+}
+
+.date,
+.maxTemp {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.weather,
+.minTemp {
+  font-weight: 200;
+  font-size: 14px;
+}

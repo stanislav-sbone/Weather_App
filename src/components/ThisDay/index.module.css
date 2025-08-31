@@ -13,7 +13,7 @@
 .thisDayTop {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .cityName {
@@ -25,6 +25,7 @@
 
 .city {
   font-weight: 600;
+  font-size: 22px;
 }
 
 .country {
@@ -66,7 +67,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .card {

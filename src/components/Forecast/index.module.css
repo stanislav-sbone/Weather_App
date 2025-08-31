@@ -17,3 +17,13 @@
 .title h3 {
   font-weight: 500;
 }
+
+.cards {
+  margin-top: 1rem;
+  max-height: 425px;
+  overflow-y: hidden;
+  /* cursor: grab; */
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.75rem;
+}

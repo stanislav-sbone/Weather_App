@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import axios from 'axios';
 import type { Units, WeatherData } from './types';
 import { API_KEY, BASE_URL } from './constants';
@@ -16,24 +17,25 @@ export async function fetchCurrentWeatherByCity(
   try {
     const { data } = await axios.get(url.toString());
 
-    const now = new Date();
-    const options: Intl.DateTimeFormatOptions = {
-      weekday: 'long',
+    const localDate = new Date(data.dt * 1000);
+
+    const date = localDate.toLocaleDateString(lang, {
       month: 'short',
       day: 'numeric',
-    };
-
-    const date = now.toLocaleDateString(lang, options);
-    const time = now.toLocaleTimeString(lang, {
+    });
+    const time = localDate.toLocaleTimeString(lang, {
       hour: '2-digit',
       minute: '2-digit',
     });
 
-    const sunrise = new Date(data.sys.sunrise * 1000).toLocaleTimeString(lang, {
+    const sunriseDate = new Date((data.sys.sunrise + data.timezone) * 1000);
+    const sunsetDate = new Date((data.sys.sunset + data.timezone) * 1000);
+
+    const sunrise = sunriseDate.toLocaleTimeString(lang, {
       hour: '2-digit',
       minute: '2-digit',
     });
-    const sunset = new Date(data.sys.sunset * 1000).toLocaleTimeString(lang, {
+    const sunset = sunsetDate.toLocaleTimeString(lang, {
       hour: '2-digit',
       minute: '2-digit',
     });

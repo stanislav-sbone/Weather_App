@@ -4,17 +4,20 @@ import Header from './components/Header';
 import InfoContainer from './components/InfoContainer';
 import SearchBar from './components/SearchBar';
 import ThisDay from './components/ThisDay';
+import { WeatherProvider } from './context/WeatherContext';
 
 function App() {
   return (
-    <AppContainer>
-      <Header />
-      <SearchBar />
-      <InfoContainer>
-        <ThisDay />
-        <Forecast />
-      </InfoContainer>
-    </AppContainer>
+    <WeatherProvider>
+      <AppContainer>
+        <Header />
+        <SearchBar />
+        <InfoContainer>
+          <ThisDay />
+          <Forecast />
+        </InfoContainer>
+      </AppContainer>
+    </WeatherProvider>
   );
 }
 

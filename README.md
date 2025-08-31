@@ -7,4 +7,5 @@
 - React
 - TypeScript
 - CSS modules
+- axios
 - Pre-commit hook (Husky + lint-staged)

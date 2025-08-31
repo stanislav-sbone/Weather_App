@@ -1,13 +1,10 @@
 import { type FC } from 'react';
 import s from './index.module.css';
 import { MapPin, Sun, Sunrise, Sunset } from 'lucide-react';
-import { useWeather } from '../../hooks/useWeather';
+import { useWeatherContext } from '../../context/WeatherContext';
 
 const ThisDay: FC = () => {
-  const { weather, loading, error } = useWeather('Москва');
-
-  if (loading) return <p>Загрузка...</p>;
-  if (error || !weather) return <p>{error ?? 'Нет данных'}</p>;
+  const { weather } = useWeatherContext();
 
   return (
     <div className={s.thisDay}>

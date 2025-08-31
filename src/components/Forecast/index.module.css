@@ -1,0 +1,19 @@
+.forecast {
+  width: calc(1100px - 700px - 2rem);
+  background: rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(1rem);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.title h3 {
+  font-weight: 500;
+}

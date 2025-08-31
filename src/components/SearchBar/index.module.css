@@ -1,0 +1,51 @@
+.searchBar {
+  max-width: 750px;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+
+.inputContainer {
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  padding: 1rem 4rem 1rem 3rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(1rem);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow:
+      0 0 0 2px rgba(255, 255, 255, 0.3),
+      0 0 0 1px rgba(255, 255, 255, 0.4);
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+}
+
+.clear {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: white;
+  }
+}
+
+.empty {
+  display: none;
+}

@@ -1,10 +1,14 @@
 import { type FC } from 'react';
 import s from './index.module.css';
-import { MapPin, Sun, Sunrise, Sunset } from 'lucide-react';
+import { Cloud, MapPin, Sunrise, Sunset } from 'lucide-react';
 import { useWeatherContext } from '../../context/WeatherContext';
+import { weatherIcons } from '../../icons/weatherIcons';
 
 const ThisDay: FC = () => {
   const { weather } = useWeatherContext();
+  const Icon = weather
+    ? weatherIcons[weather.weather.toLowerCase()] || Cloud
+    : Cloud;
 
   return (
     <div className={s.thisDay}>
@@ -30,7 +34,7 @@ const ThisDay: FC = () => {
           <p className={s.weather}>{weather?.weather}</p>
         </div>
         <div>
-          <Sun className={s.weatherImage} />
+          <Icon className={s.weatherImage} />
         </div>
       </div>
 

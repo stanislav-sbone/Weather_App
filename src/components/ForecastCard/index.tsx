@@ -2,16 +2,20 @@ import { Cloud } from 'lucide-react';
 import { type FC } from 'react';
 import s from './index.module.css';
 import type { DailyForecast } from '../../types';
+import { weatherIcons } from '../../icons/weatherIcons';
 
 interface IProps {
   forecast: DailyForecast;
 }
 
 const ForecastCard: FC<IProps> = ({ forecast }) => {
+  const Icon = forecast ? weatherIcons[forecast.weather.toLowerCase()] : Cloud;
+
   return (
     <div className={s.forecastCard}>
       <div>
-        <Cloud className={s.cardImage} />
+        {/* <Cloud className={s.cardImage} /> */}
+        <Icon className={s.cardImage} />
       </div>
       <div className={s.cardInfo}>
         <p className={s.date}>

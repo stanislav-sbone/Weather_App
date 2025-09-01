@@ -51,7 +51,7 @@ const Forecast: FC = () => {
         // onMouseMove={handleMouseMove}
       >
         {weeklyForecast?.map((forecast) => (
-          <ForecastCard forecast={forecast} />
+          <ForecastCard key={forecast.date} forecast={forecast} />
         ))}
       </div>
     </div>

@@ -1,0 +1,26 @@
+.sunCard {
+  backdrop-filter: blur(8px);
+  border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sunCardDetails {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+}
+
+.sunTimeLabel {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.sunTimeValue {
+  color: white;
+  font-weight: 600;
+  font-size: 1.125rem;
+}

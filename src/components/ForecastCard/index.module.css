@@ -6,6 +6,11 @@
   backdrop-filter: blur(8px);
   border-radius: 1rem;
   padding: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.forecastCard:hover {
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
 .cardImage {

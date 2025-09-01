@@ -3,7 +3,7 @@ import Forecast from './components/Forecast';
 import Header from './components/Header';
 import InfoContainer from './components/InfoContainer';
 import SearchBar from './components/SearchBar';
-import ThisDay from './components/ThisDay';
+import CurrentDay from './components/ThisDay';
 import { WeatherProvider } from './context/WeatherContext';
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
         <Header />
         <SearchBar />
         <InfoContainer>
-          <ThisDay />
+          <CurrentDay />
           <Forecast />
         </InfoContainer>
       </AppContainer>

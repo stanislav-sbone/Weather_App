@@ -1,9 +1,10 @@
 import { createContext, useContext, type ReactNode } from 'react';
-import type { WeatherData } from '../types';
+import type { DailyForecast, WeatherData } from '../types';
 import { useWeather } from '../hooks/useWeather';
 
 interface WeatherContextType {
   weather: WeatherData | null;
+  weeklyForecast: DailyForecast[] | null;
   loading: boolean;
   error: string | null;
   city: string;
@@ -13,11 +14,12 @@ interface WeatherContextType {
 const WeatherContext = createContext<WeatherContextType | null>(null);
 
 export const WeatherProvider = ({ children }: { children: ReactNode }) => {
-  const { weather, loading, error, city, updateCity } = useWeather('Москва');
+  const { weather, weeklyForecast, loading, error, city, updateCity } =
+    useWeather('Москва');
 
   return (
     <WeatherContext.Provider
-      value={{ weather, loading, error, city, updateCity }}
+      value={{ weather, weeklyForecast, loading, error, city, updateCity }}
     >
       {children}
     </WeatherContext.Provider>

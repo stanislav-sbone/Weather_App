@@ -9,12 +9,13 @@ interface IProps {
 }
 
 const ForecastCard: FC<IProps> = ({ forecast }) => {
-  const Icon = forecast ? weatherIcons[forecast.weather.toLowerCase()] : Cloud;
+  const Icon = forecast
+    ? weatherIcons[forecast.weather.toLowerCase()] || Cloud
+    : Cloud;
 
   return (
     <div className={s.forecastCard}>
       <div>
-        {/* <Cloud className={s.cardImage} /> */}
         <Icon className={s.cardImage} />
       </div>
       <div className={s.cardInfo}>

@@ -14,6 +14,7 @@ export const weatherIcons: Record<string, FC<{ className?: string }>> = {
   ясно: Sun,
   'переменная облачность': Cloud,
   'облачно с прояснениями': CloudSun,
+  'небольшой дождь': CloudRain,
   пасмурно: Cloudy,
   дождь: CloudRain,
   снег: CloudSnow,

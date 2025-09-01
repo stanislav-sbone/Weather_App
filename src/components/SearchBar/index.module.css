@@ -1,7 +1,8 @@
 .searchBar {
   max-width: 750px;
   margin: 0 auto;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
+  width: 350px;
 }
 
 .inputContainer {
@@ -75,4 +76,22 @@
 
 .empty {
   display: none;
+}
+
+/* @media (width >= 425px) {
+  .searchBar {
+    width: 350px;
+  }
+} */
+
+@media (width >= 768px) {
+  .searchBar {
+    width: 650px;
+  }
+}
+
+@media (width >= 1024px) {
+  .searchBar {
+    width: 100%;
+  }
 }

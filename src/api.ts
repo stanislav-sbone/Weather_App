@@ -89,7 +89,7 @@ export async function fetchWeeklyForecastByCity(
 
     const dailyForecasts: DailyForecast[] = Object.entries(dailyMap).map(
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      ([dateStr, items]) => {
+      ([_dateStr, items]) => {
         const temps = items.map((i) => i.main.temp);
         const tempMin = Math.round(Math.min(...temps));
         const tempMax = Math.round(Math.max(...temps));

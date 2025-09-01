@@ -1,7 +1,7 @@
 .temperature {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .temp {
@@ -21,4 +21,10 @@
 .image {
   width: 75px;
   height: 75px;
+}
+
+@media (width >= 1440px) {
+  .temperature {
+    margin-bottom: 1.5rem;
+  }
 }

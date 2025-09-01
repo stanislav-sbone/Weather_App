@@ -3,7 +3,7 @@ import s from './index.module.css';
 import Temperature from '../Temperature';
 import WeatherCards from '../WeatherCards';
 import SunTime from '../SunTime';
-import CurrentDayInfo from '../ThisDayInfo';
+import CurrentDayInfo from '../CurrentDayInfo';
 
 const CurrentDay: FC = () => {
   return (

@@ -10,9 +10,9 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  height: 100vh;
-  background: linear-gradient(to bottom, #356cd1, #84bbff);
+  background: linear-gradient(to bottom, #356cd1, #6c78fb);
   color: rgb(225, 225, 225);
+  min-height: 100vh;
 }
 
 input,

@@ -3,7 +3,7 @@ import Forecast from './components/Forecast';
 import Header from './components/Header';
 import InfoContainer from './components/InfoContainer';
 import SearchBar from './components/SearchBar';
-import CurrentDay from './components/ThisDay';
+import CurrentDay from './components/CurrentDay';
 import { WeatherProvider } from './context/WeatherContext';
 
 function App() {

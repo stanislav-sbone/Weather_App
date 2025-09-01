@@ -4,8 +4,8 @@
   backdrop-filter: blur(1rem);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 1.5rem;
-  padding: 2rem;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  padding: 2rem 1rem;
+  width: 350px;
 }
 
 .title {
@@ -20,9 +20,39 @@
 
 .cards {
   margin-top: 1rem;
-  max-height: 425px;
+  max-height: 500px;
   overflow-y: hidden;
   display: flex;
   flex-direction: column;
   row-gap: 0.85rem;
+}
+
+@media (width >= 768px) {
+  .forecast {
+    width: 650px;
+    height: 519px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+}
+
+@media (width >= 1024px) {
+  .forecast {
+    width: 350px;
+    height: 519px;
+  }
+
+  .cards {
+    margin-top: 1rem;
+  }
+}
+
+@media (width >= 1440px) {
+  .forecast {
+    width: 400px;
+    height: 531px;
+  }
+
+  .cards {
+    max-height: 425px;
+  }
 }

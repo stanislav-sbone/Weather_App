@@ -1,7 +1,7 @@
 .info {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .cityName {
@@ -22,4 +22,10 @@
 
 .time {
   text-align: right;
+}
+
+@media (width >= 1440px) {
+  .info {
+    margin-bottom: 1.5rem;
+  }
 }

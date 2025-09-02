@@ -74,54 +74,66 @@ export async function fetchWeeklyForecastByCity(
 ): Promise<DailyForecast[] | null> {
   try {
     const { data } = await axios.get(`${BASE_URL}/data/2.5/forecast`, {
-      params: {
-        q: city,
-        appid: API_KEY,
-        units,
-        lang,
-      },
+      params: { q: city, appid: API_KEY, units, lang },
     });
 
-    const timezoneOffset = data.city.timezone;
-    const dailyMap: Record<string, any[]> = {};
+    const timezone = data.city.timezone as number;
+    const dailyMap = new Map<string, any[]>();
 
-    data.list.forEach((item: any) => {
-      const localDate = new Date((item.dt + timezoneOffset) * 1000);
-      const dateKey = localDate.toISOString().split('T')[0];
-      if (!dailyMap[dateKey]) dailyMap[dateKey] = [];
-      dailyMap[dateKey].push(item);
-    });
+    const toCityDate = (unixUtcSec: number) =>
+      new Date((unixUtcSec + timezone) * 1000);
 
-    const dailyForecasts: DailyForecast[] = Object.entries(dailyMap).map(
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      ([_dateStr, items]) => {
-        const temps = items.map((i) => i.main.temp);
-        const tempMin = Math.round(Math.min(...temps));
-        const tempMax = Math.round(Math.max(...temps));
+    const makeDateKey = (d: Date) => {
+      const y = d.getUTCFullYear();
+      const m = String(d.getUTCMonth() + 1).padStart(2, '0');
+      const da = String(d.getUTCDate()).padStart(2, '0');
+      return `${y}-${m}-${da}`;
+    };
 
-        const weatherCounts: Record<string, number> = {};
-        items.forEach((i) => {
-          const desc = i.weather[0].description;
-          weatherCounts[desc] = (weatherCounts[desc] || 0) + 1;
-        });
-        const weather = Object.entries(weatherCounts).sort(
-          (a, b) => b[1] - a[1]
-        )[0][0];
+    for (const item of data.list as any[]) {
+      const cityDate = toCityDate(item.dt);
+      const key = makeDateKey(cityDate);
+      if (!dailyMap.has(key)) dailyMap.set(key, []);
+      dailyMap.get(key)!.push(item);
+    }
 
-        const localDate = new Date((items[0].dt + timezoneOffset) * 1000);
-        const dayOfWeek = localDate.toLocaleDateString(lang, {
-          weekday: 'long',
-        });
-        const date = localDate.toLocaleDateString(lang, {
-          month: 'short',
-          day: 'numeric',
-        });
-
-        return { date, dayOfWeek, tempMin, tempMax, weather };
-      }
+    const sortedDays = [...dailyMap.entries()].sort((a, b) =>
+      a[0].localeCompare(b[0])
     );
 
-    return dailyForecasts.slice(0, 5);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const dailyForecasts: DailyForecast[] = sortedDays.map(([_, items]) => {
+      const temps = items.map((i) => i.main.temp);
+      const tempMin = Math.round(Math.min(...temps));
+      const tempMax = Math.round(Math.max(...temps));
+
+      const weatherCounts: Record<string, number> = {};
+      for (const i of items) {
+        const desc = i.weather[0].description as string;
+        weatherCounts[desc] = (weatherCounts[desc] || 0) + 1;
+      }
+      const weather = Object.entries(weatherCounts).sort(
+        (a, b) => b[1] - a[1]
+      )[0][0];
+
+      const firstCityDate = toCityDate(items[0].dt);
+
+      const dayOfWeek = firstCityDate.toLocaleDateString(lang, {
+        weekday: 'long',
+        timeZone: 'UTC',
+      });
+      const date = firstCityDate.toLocaleDateString(lang, {
+        month: 'short',
+        day: 'numeric',
+        timeZone: 'UTC',
+      });
+
+      return { date, dayOfWeek, tempMin, tempMax, weather };
+    });
+
+    return dailyForecasts.length === 5
+      ? dailyForecasts
+      : dailyForecasts.slice(1, 6);
   } catch (error) {
     console.error('Ошибка при получении прогноза:', error);
     return null;

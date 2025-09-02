@@ -18,27 +18,32 @@ export async function fetchCurrentWeatherByCity(
   try {
     const { data } = await axios.get(url.toString());
 
-    const localDate = new Date(data.dt * 1000);
+    const timezoneOffset = data.timezone;
+    const localDate = new Date((data.dt + timezoneOffset) * 1000);
 
     const date = localDate.toLocaleDateString(lang, {
       month: 'short',
       day: 'numeric',
+      timeZone: 'UTC',
     });
     const time = localDate.toLocaleTimeString(lang, {
       hour: '2-digit',
       minute: '2-digit',
+      timeZone: 'UTC',
     });
 
-    const sunriseDate = new Date(data.sys.sunrise * 1000);
-    const sunsetDate = new Date(data.sys.sunset * 1000);
+    const sunriseTime = new Date((data.sys.sunrise + timezoneOffset) * 1000);
+    const sunsetTime = new Date((data.sys.sunset + timezoneOffset) * 1000);
 
-    const sunrise = sunriseDate.toLocaleTimeString(lang, {
+    const sunrise = sunriseTime.toLocaleTimeString(lang, {
       hour: '2-digit',
       minute: '2-digit',
+      timeZone: 'UTC',
     });
-    const sunset = sunsetDate.toLocaleTimeString(lang, {
+    const sunset = sunsetTime.toLocaleTimeString(lang, {
       hour: '2-digit',
       minute: '2-digit',
+      timeZone: 'UTC',
     });
 
     return {

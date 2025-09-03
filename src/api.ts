@@ -1,7 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-console */
 import axios from 'axios';
-import type { DailyForecast, Units, WeatherData } from './types';
+import type {
+  DailyForecast,
+  Units,
+  WeatherData,
+  CitySuggestion,
+} from './types';
 import { API_KEY, BASE_URL } from './constants';
 
 export async function fetchCurrentWeatherByCity(
@@ -137,5 +142,41 @@ export async function fetchWeeklyForecastByCity(
   } catch (error) {
     console.error('Ошибка при получении прогноза:', error);
     return null;
+  }
+}
+
+export async function fetchCitySuggestions(
+  query: string,
+  limit = 5,
+  lang: string = 'ru'
+): Promise<CitySuggestion[]> {
+  if (!query.trim()) return [];
+  try {
+    const url = new URL(`${BASE_URL}/geo/1.0/direct`);
+    url.searchParams.set('q', query);
+    url.searchParams.set('limit', String(limit));
+    url.searchParams.set('appid', API_KEY);
+
+    const { data } = await axios.get(url.toString());
+
+    const seen = new Set<string>();
+    const suggestions: CitySuggestion[] = [];
+
+    for (const item of data as any[]) {
+      const localizedName: string = item?.local_names?.[lang] || item.name;
+      const state: string | undefined = item.state;
+      const country: string | undefined = item.country;
+
+      const key = `${localizedName}|${state ?? ''}|${country ?? ''}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+
+      suggestions.push({ name: localizedName, state, country });
+    }
+
+    return suggestions;
+  } catch (error) {
+    console.error('Ошибка при получении подсказок городов:', error);
+    return [];
   }
 }

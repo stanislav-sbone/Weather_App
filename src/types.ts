@@ -23,3 +23,9 @@ export interface DailyForecast {
   tempMax: number;
   weather: string;
 }
+
+export interface CitySuggestion {
+  name: string;
+  state?: string;
+  country?: string;
+}

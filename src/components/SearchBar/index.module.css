@@ -34,6 +34,47 @@
   }
 }
 
+.suggestions {
+  position: absolute;
+  top: calc(100% + 0.25rem);
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(1rem);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.75rem;
+  padding: 0.25rem 0;
+  margin: 0;
+  list-style: none;
+  z-index: 10;
+  max-height: 260px;
+}
+
+.suggestion {
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.18);
+  }
+}
+
+.suggestionActive {
+  composes: suggestion;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.cityName {
+  font-weight: 600;
+}
+
+.state {
+  opacity: 0.8;
+}
+
 .buttons {
   position: absolute;
   right: 1rem;
